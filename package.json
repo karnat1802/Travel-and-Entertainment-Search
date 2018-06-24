@@ -1,0 +1,25 @@
+{
+  "name": "hw8",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "@tonybadguy/call-me-maybe": "^2.0.1",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "http": "^0.0.0",
+    "moment": "^2.21.0",
+    "moment-timezone": "^0.5.14",
+    "path": "^0.12.7",
+    "promise": "^8.0.1",
+    "request": "^2.85.0",
+    "yelp-fusion": "^2.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

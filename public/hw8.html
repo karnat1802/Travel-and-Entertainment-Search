@@ -1,0 +1,2641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->  
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+
+<!-- <link 
+  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" 
+  rel="stylesheet"  type='text/css'> -->
+
+	<link rel="stylesheet" type="text/css" href="hw8.css">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<!-- 	// <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" type="text/javascript"></script>
+  
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCce-VriR7VcN1MGfZnUrNdIAGTK5bF9Ek&libraries=places"></script>
+  <script src="moment-with-locales.min.js"></script>
+  <!-- Latest compiled and minified CSS -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+
+  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
+  <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
+
+</head>
+<body onload="loadJson()" ng-app="myApp">
+	<div class="container" >
+		<div class="card card-block bg-light" style="margin-top:10px">
+
+			<h4 class="text-center" >Travel and Entertainment Search</h4> 
+			<form class="needs-validation" novalidate name ="myform" id="form">
+  				<div class="form-group row">
+  						
+    					<label for="keyword"   style="text-align: left"class="col-sm-3 col-form-label  col-form-label-sm" >Keyword*</label>
+    					<div class="col-sm-8">
+      						<input type="text" onkeyup="enable()" class="form-control form-control-sm" id="keyword" required>
+      						<div class="invalid-feedback">
+        						Please enter a keyword.
+      						</div>	
+    					</div>
+  				</div>
+  				<div class="form-group row">
+
+    					<label for="category" style="text-align: left" class="col-sm-3 col-form-label  col-form-label-sm" >Category</label>
+    					<div class="col-sm-6">
+      						<select type="text" class="form-control form-control-sm" id="category" >
+      						<option value="default">Default</option>
+    							<option value="airport">Airport</option>
+    							<option value="amusement_park">Amusement Park</option>
+    							<option value="aquarium" >Aquarium</option>
+    							<option value="art_gallery">Art Gallery</option>
+    							<option value="bakery">Bakery</option>
+    							<option value="bar">Bar</option>
+    							<option value="beauty_salon">Beauty Salon</option>
+    							<option value="bowling_alley">Bowling Alley</option>
+    							<option value="bus_station">Bus Station</option>
+    							<option value="cafe">Cafe</option>
+    							<option value="campground">Campground</option>
+    							<option value="car_rental">Car Rental</option>
+    							<option value="casino">Casino</option>
+    							<option value="lodging">Lodging</option>
+    							<option value="movie_theater">Movie Theater</option>
+    							<option value="museum">Museum</option>
+    							<option value="night_club">Night Club</option>
+    							<option value="park">Park</option>
+    							<option value="parking">Parking</option>
+    							<option value="restaurant">Restaurant</option>
+    							<option value="shopping_mall">Shopping Mall</option>
+    							<option value="stadium">Stadium</option>
+    							<option value="subway_station">Subway Station</option>
+    							<option value="taxi_stand">Taxi Stand</option>
+    							<option value="train_station">Train Station</option>
+    							<option value="travel_agency">Travel Agency</option>
+    							<option value="zoo">Zoo</option>
+    						</select>	
+    					</div>
+  				</div>
+  				<div class="form-group row">
+    					<label for="distance"  style="text-align: left" class="col-sm-3 col-form-label  col-form-label-sm" >Distance</label>
+    					<div class="col-sm-6">
+      						<input type="text" class="form-control form-control-sm" id="distance" placeholder="10" >
+    					</div>
+  				</div>
+
+  				<div class="form-group row">
+    					<label for="location"  style="text-align: left" style="margin-top:5px" class="col-sm-3 col-form-label  col-form-label-sm" >From*</label>
+    					<div class="col-sm-8">
+      						<div class="form-check">
+  								<input class="form-check-input" type="radio" name="locradio" onclick = "setNotRequired()"  value="curr" checked>
+  								<label class="form-check-label" for="exampleRadios1">
+    								Current Location
+  								</label>
+							</div>
+							<div class="form-check">
+  							<input class="form-check-input" type="radio" name="locradio"  onclick = "setRequired()" value="given">
+  							<label class="form-check-label" for="exampleRadios2">
+    						Other, Please Specify:
+  							</label>
+							</div>
+    						<div id="locationField">
+    						<input type="text" style="margin-left:6%" class="form-control form-control-sm" onkeyup="enable()"  name ="location" id="autocomplete" placeholder="Enter a location" disabled >
+                <div style="margin-left:30px"class="invalid-feedback">
+                    Please enter a location.
+                </div>
+                <input type="hidden" name="latitude" value="">
+                <input type="hidden" name="longitude" value="">
+    						</div>
+    							
+    					</div>
+  				</div>
+  
+  				<div class="form-group row">
+    			
+
+      				<button type="button" id="sub"  class="btn btn-primary"><i class="fas fa-search"></i> Search</button>
+      				<button type="button" onClick="setClear()" class="btn btn-light btn-outline-secondary">Clear</button>
+    			
+				</div>	
+			</form>
+  		</div>
+      <div id="buttons-div">
+      <button type="button"  class="btn btn-primary" id="results" onClick="changeButton1();showEverything()">Results</button>
+      <button type="button"  class="btn" id="favourites" onClick="changeButton();showFavourites()">Favorites</button>
+    </div>
+  	</div>
+    <div class="container" id="everything" ng-app="myApp"  ng-controller="MainCtrl"><div id="content" class="slide-from-right" ng-show="!showFull"></div><div id="detail" class="slide-from-left" ng-show="showFull"></div></div>
+    </body>
+<script> 
+    var myApp = angular.module('myApp',['ngAnimate']);
+
+myApp.controller('MainCtrl', MainCtrl);
+
+function MainCtrl($scope) {
+   $scope.showFull = false
+}
+
+
+    var placeSearch, autocomplete;
+    var pageResults;
+    var i;
+    var autocomplete2;
+
+    var favpagenumber = 0;
+    var favtable;
+    var resultstable;
+    var favs=false;
+    var results=true;
+    var resultsPage = false;
+
+    var inresults = true;
+
+   
+        var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'short_name',
+        country: 'long_name',
+        postal_code: 'short_name'
+      };
+
+      
+        // Create the autocomplete object, restricting the search to geographical
+        // location types.
+        autocomplete = new google.maps.places.Autocomplete(
+            /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+            {types: ['geocode']});
+
+        // When the user selects an address from the dropdown, populate the address
+        // fields in the form.
+      //   autocomplete.addListener('place_changed', fillInAddress);
+        
+        
+      // document.getElementById('deetbutton').addEventListener('click', setDetailsEnable);  
+
+      document.getElementById("sub").disabled = true;
+      function enable()
+      {
+        console.log("came here");
+        document.getElementById("sub").disabled = false;
+      }
+      
+      function fillInAddress() {
+        // Get the place details from the autocomplete object.
+        var place = autocomplete.getPlace();
+        
+        for (var i = 0; i < place.address_components.length; i++) {
+          var addressType = place.address_components[i].types[0];
+          if (componentForm[addressType]) {
+            var val = place.address_components[i][componentForm[addressType]];
+            // console.log(addressType+" "+val);
+          }
+        }
+
+    }
+  
+  function fillInAddress2() {
+        // Get the place details from the autocomplete object.
+        var place = autocomplete2.getPlace();
+        
+        for (var i = 0; i < place.address_components.length; i++) {
+          var addressType = place.address_components[i].types[0];
+          if (componentForm[addressType]) {
+            var val = place.address_components[i][componentForm[addressType]];
+            // console.log(addressType+" "+val);
+          }
+        }
+
+    }
+
+
+  function showEverything(){
+    
+    console.log(resultsPage);
+    if(resultsPage == true)
+    {
+      console.log("Came inside here")
+      var scope = angular.element(document.getElementById('everything')).scope();
+      scope.showFull = false;
+      scope.$apply();
+      console.log("every when inside goback from results ",every);
+      if(pageNumber==0)   //No prev buttons
+      {
+      var tablehtml = generateTableHMTL(pageResults[pageNumber]);
+      var next_page_token = pageResults[pageNumber].next_page_token;
+      
+      next_page_token = next_page_token.replace(/(['"])/g, "\\'");
+      tablehtml += '<div id="buttons-div"><button type="button"  class="btn btn-light btn-outline-secondary" id="next" onClick="displayNextPage(\''+next_page_token+'\')">Next</button></div>';
+      document.getElementById("content").innerHTML= tablehtml;
+      }
+      else     //Yes prev buttons 
+      {
+      var tablehtml = generateTableHMTL(pageResults[pageNumber]);
+      var next_page_token = pageResults[pageNumber].next_page_token;
+      
+      next_page_token = next_page_token.replace(/(['"])/g, "\\'");
+      
+      tablehtml += '<div id="buttons-div"><button type="button" onClick="displayPrevPage()" class="btn btn-light btn-outline-secondary" id="prev">Previous</button><button type="button"  class="btn btn-light btn-outline-secondary" id="next" onClick="displayNextPage(\''+next_page_token+'\')">Next</button></div>';
+      document.getElementById("content").innerHTML= tablehtml;
+      // console.log(i);
+
+      }
+      if(placedetails!="")
+            {
+              document.getElementById('deetbutton').disabled = false;
+            var setDetailsEnable = function() {
+        //  console.log(placedetails, placename, placelat, placelon, placeaddress, placeicon);
+              getDetails(placedetails,placename,placelat,placelon,placeaddress,placeicon);
+          
+          // console.log("You clicked something");
+          // console.log(la,lo,olat,olon);
+          };
+
+    document.getElementById('deetbutton').addEventListener('click', setDetailsEnable);
+            }
+
+    } 
+    else
+    {
+        if(norecords == true)
+        {
+          document.getElementById('content').innerHTML='<div class="alert alert-warning" role="alert" style="margin-top:10%;">No records</div>';
+          document.getElementById('detail').innerHTML='';
+          var scope = angular.element(document.getElementById('everything')).scope();
+          scope.showFull = false;
+          scope.$apply();
+        }
+        else{
+          document.getElementById('content').innerHTML='';
+          document.getElementById('detail').innerHTML='';
+          var scope = angular.element(document.getElementById('everything')).scope();
+          scope.showFull = false;
+          scope.$apply();
+        }
+            
+      
+      
+      
+
+    }
+  }
+
+
+
+
+
+var savecontents = true;
+
+
+var every = '<div id="content"></div><div id="detail"></div></div>';
+console.log("initially", every);
+// var everything = document.getElementById('everything').innerHTML ;
+  function showFavourites(){
+    // console.log("entered here");
+
+    inresults = false;
+    var scope = angular.element(document.getElementById('everything')).scope();
+    scope.showFull = false;
+    scope.$apply();
+    
+    if(localStorage.getItem('favlist')==null)
+    {
+      console.log("favlist doesnt exist");
+      document.getElementById('content').innerHTML = '<div class="alert alert-warning" role="alert" style="margin-top:10%;">No records</div>';
+    }
+    else {
+
+
+          favlist = JSON.parse(localStorage['favlist']);
+          console.log(favlist);
+          if(localStorage.getItem('favlist')==null || favlist.length ==0)
+          {
+              document.getElementById('content').innerHTML = '<div class="alert alert-warning" role="alert" style="margin-top:10%;">No records</div>';
+          }
+          else 
+          {
+
+            if(savecontents==true)
+            {
+              console.log("Time to save contents");
+              every = document.getElementById('everything').innerHTML;
+              console.log("every after saving contents", every);
+            }
+          var tablehtml = '<div class="container"><div  class ="float-right" id="deets"><button id="deetbutton" class="btn btn-outline-secondary" disabled>Details</button></div></div>';
+          tablehtml +=   '<table class="table table-hover">'
+          tablehtml += '<thead><tr><th>#</th><th>Category</th><th>Name</th><th>Address</th><th>Favorite</th><th>Details</th></tr></thead>';
+          var i=0;
+          console.log(favpagenumber);
+          for (var k = favpagenumber * 20; k< favlist.length;k++) {
+                // console.log(localStorage['favlist'][k].placeid);
+          if(i==20)
+          {
+            break;
+          }    
+      // console.log("entered here");
+          console.log(favlist);
+          console.log("k " +k);
+          var placeid = favlist[k].placeid;
+          var icon = favlist[k].icon;
+          var uaname = favlist[k].name;
+          name = uaname.replace(/(['"])/g, "\\'");
+          var address = favlist[k].address;
+          var lat = favlist[k].lat;
+          var lon = favlist[k].lon;
+          if(placeid == placedetails)
+          {
+            tablehtml +=  "<tr bgcolor='#FEDF96'>";
+            
+          }
+          else
+          {
+            tablehtml += "<tr>";
+          }
+      
+          tablehtml += "<td>"+(i+1)+"</td>";
+    // alert('Fruit: ' + key + '\nCount: ' + localStorage[key]);
+          tablehtml += "<td width='90px''><img src='"+icon+"'  width='40px' height='30px'></td>";
+          tablehtml += '<td>'+ uaname +'</td>';
+          tablehtml += '<td>' +address + '</td>';
+          tablehtml += '<td><button class="btn btn-outline-secondary" onClick="deleteFav(\''+placeid+'\')"><i class="fas fa-trash-alt"></i></button></td>';
+          tablehtml += '<td><button class="btn btn-outline-secondary"  onClick="getDetails(\''+placeid+'\',\'' +name +'\',\'' +lat +'\',\'' +lon +'\',\''+address+'\',\''+icon+'\')" ><i class="fas fa-chevron-right"></i></button></td>';
+          tablehtml += '</tr>';
+          i++;
+          }
+    
+  
+          tablehtml += "</table>";
+  // console.log(tablehtml);
+  // console.log(favpagenumber);
+  // console.log(favlist.length);
+  // console.log((favlist.length/((favpagenumber+ 1)* 20)));
+  // console.log(Math.floor((favlist.length+1)/((favpagenumber+ 1)* 20)));
+          if(favpagenumber>0  && (favlist.length/((favpagenumber+ 1)* 20))>1)
+          {
+            tablehtml += '<div id="buttons-div"><button type="button" onClick="displayfavPrev()" class="btn btn-light btn-outline-secondary" id="prev">Previous</button><button type="button"  class="btn btn-light btn-outline-secondary" id="next" onClick="favnext()">Next</button></div>';
+          }
+          if(favpagenumber>0 && (favlist.length/((favpagenumber+ 1)* 20))<1)
+          {
+          tablehtml += '<div id="buttons-div"><button type="button" onClick="displayfavPrev()" class="btn btn-light btn-outline-secondary" id="prev">Previous</button></div>';
+          }
+
+
+          if( favpagenumber==0 && (favlist.length/((favpagenumber+ 1)* 20))>1)
+          {
+            tablehtml += '<div id="buttons-div"><button type="button"  class="btn btn-light btn-outline-secondary" id="next" onClick="favnext()">Next</button></div>';
+          }
+          console.log(tablehtml);  
+          document.getElementById('content').innerHTML = tablehtml;
+          document.getElementById('detail').innerHTML = "";
+
+          if(placedetails!="")
+            {
+              console.log(placedetails);
+              document.getElementById('deetbutton').disabled = false;
+            var setDetailsEnable = function() {
+        //  console.log(placedetails, placename, placelat, placelon, placeaddress, placeicon);
+              getDetails(placedetails,placename,placelat,placelon,placeaddress,placeicon);
+          
+          // console.log("You clicked something");
+          // console.log(la,lo,olat,olon);
+          };
+
+          document.getElementById('deetbutton').addEventListener('click', setDetailsEnable);
+          }
+          console.log("everything inside favourites after table is generated",every);
+      }
+    }
+  }
+
+  function displayfavPrev(){
+    savecontents = false;
+    favpagenumber = favpagenumber -1;
+    showFavourites();
+  }
+
+  function deleteFav(placeid)
+  {
+    console.log("Entered Delete Favs");
+    console.log("PlaceID to Delete "+placeid);
+    var favlist=JSON.parse(localStorage.getItem("favlist"));
+    var index;
+      for(var i=0;i<favlist.length;i++)
+      {
+        if(favlist[i].placeid == placeid)
+        {
+          
+          index = i;
+          
+          break;
+          // favlist = (favlist.splice(index,1));
+        }
+        // console.log(favlist[i].placeid);
+      }
+      
+        console.log("Fav List found at:" +index);
+        favlist.splice(index,1);
+        // console.log(favlist);
+        localStorage.setItem("favlist",JSON.stringify(favlist));
+        console.log("Fav List "+favlist);
+        if(favlist.length!=0 && favlist.length%20 ==0)
+        {
+          favpagenumber = favpagenumber -1;
+          savecontents =false;
+          showFavourites();
+
+        }
+        else{
+          savecontents = false;
+          showFavourites();
+        }
+      }
+
+
+      
+  function favnext()
+  {
+    savecontents =false;
+    // console.log("Entered here");
+    favpagenumber +=1;
+    showFavourites();
+  }
+
+  function setClear(){
+    var scope = angular.element(document.getElementById('everything')).scope();
+    scope.showFull = false;
+    resultsPage = false;
+    norecords = false;
+    scope.$apply();
+    document.getElementById("sub").disabled = true;
+    form.classList.remove('was-validated');
+    document.getElementById('keyword').value="";
+    document.myform.locradio[0].checked = true;
+    document.myform.location.value = "";
+    document.myform.location.disabled = true;
+    document.getElementById("distance").value = "";
+    var dropDown = document.myform.category;
+    dropDown.selectedIndex = 0;
+
+  
+    document.getElementById('content').innerHTML = "";
+    document.getElementById('detail').innerHTML = "";
+    changeButton1();
+    
+  }
+
+
+
+   $("#sub").click(function(event) {
+
+
+    changeButton1();
+    var scope = angular.element(document.getElementById('everything')).scope();
+    scope.showFull = false;
+    scope.$apply();
+    document.getElementById('detail').innerHTML ="";
+    var flag = 1;
+    var keyword = document.getElementById("keyword").value;
+    document.getElementById("keyword").value = keyword.trim(); 
+    var keyw = document.getElementById("keyword");
+    if(keyw.checkValidity()===false)
+    {
+
+      event.preventDefault();
+      event.stopPropagation();
+      form.classList.add('was-validated');
+      return false;
+      
+    }
+    else{
+      var keyword = document.getElementById("keyword").value;
+    }
+    
+
+     
+    keyword = encodeURIComponent(keyword);
+    var distance = document.getElementById("distance").value;
+    if(distance=="")
+    {
+      distance = 10 * 1609.34;
+    }
+    else{
+      distance = distance * 1609.34;
+    }
+
+    var category = document.getElementById("category").value;
+    
+
+    if(document.myform.locradio[0].checked)
+    {
+      
+      var location = "here";
+    }
+    if(document.myform.locradio[1].checked)
+    {
+
+      var location = document.getElementById("autocomplete").value;
+      document.getElementById("autocomplete").value = location.trim();
+      var loc = document.getElementById("autocomplete");
+
+      if(!loc.checkValidity())
+    {
+      event.preventDefault();
+      event.stopPropagation();
+      form.classList.add('was-validated');
+      return false;
+      
+    }
+    else
+    {
+      var location = document.getElementById("autocomplete").value;
+    }
+
+    
+    location = encodeURIComponent(location);
+    }
+
+    var latitude = document.myform.latitude.value;
+    var longitude = document.myform.longitude.value;
+    var progress = '<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 50%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div></div>';
+    document.getElementById("content").innerHTML = progress;
+    // console.log(category+" "+distance+" "+keyword+" "+latitude+" "+longitude+" "+location);
+    var parameters = {
+      category:category,
+      distance:distance,
+      keyword:keyword,
+      loc:location,
+      latitude:latitude,
+      longitude:longitude
+    }
+      console.log(parameters)
+      $.ajax({
+        type:'GET',
+        // url:'http://localhost:8081/search',
+        url: 'http://karthikncs571hw8-env.us-east-2.elasticbeanstalk.com/search',
+        contentType: 'application/json', 
+        data: parameters,
+        
+        success: function (response,status,xhr) {
+          responseData = JSON.parse(response);
+          document.getElementById("content").innerHTML = "";
+          console.log(responseData);
+          // console.log(responseData);
+          // console.log(responseData);
+          displayResultsTable(responseData);
+          savecontents = true;
+          
+        },
+        error: function (xhr,status,error) {
+          console.log(status+" "+xhr);
+          console.log('Error: ' + error.message);
+          console.log("There was an error");
+          document.getElementById('content').innerHTML = '<div class="alert alert-danger" role="alert">Failed to get search Results</div>';
+          savecontents = true;
+          }
+      }); 
+    });
+    var parameters;
+    var pageNumber;
+   function displayResultsTable(responseData)
+   {
+      // console.log(responseData);
+      placename = "";
+      placedetails = "";
+      placelat = "";
+      placelon = "";
+      placeicon = "";
+      placeaddress = "";
+      parameters = {};
+      pageResults = [];
+      pageNumber=0;
+
+      // console.log(responseData);
+      if(responseData.response.status=="ZERO_RESULTS" || responseData.response.status!="OK")
+      {
+        document.getElementById('content').innerHTML = '<div class="alert alert-warning" role="alert" style="margin-top:10%;">No records</div>';
+        norecords = true;
+      }
+      else
+      {
+
+
+      // nptarray = [];
+      // j=0;
+      // i = 0;
+      // pageResults[i] = responseData.response;
+      // pageNumber = i;
+      // i++;
+      // console.log(responseData);
+      // console.log(pageNumber);
+      pageResults.push(responseData.response);
+
+       // console.log(pageResults);
+      if("next_page_token" in responseData.response)
+      {
+        // console.log("Next page exists");
+        var tablehtml = generateTableHMTL(responseData.response);
+        var next_page_token = responseData.response.next_page_token;
+         // nptarray[j++] = next_page_token;
+        // console.log(nptarray);
+        next_page_token = next_page_token.replace(/(['"])/g, "\\'");
+        // parameters = responseData.parameters;
+        // parameters['next_page_token'] = next_page_token;
+        // console.log(parameters);
+        // var parameters = JSON.parse(parameters);
+
+        // console.log(next_page_token);
+        // console.log(next_page_token);
+
+        tablehtml += '<div id="buttons-div"><button type="button"  class="btn btn-light btn-outline-secondary" id="next" onClick="displayNextPage(\''+next_page_token+'\')">Next</button></div>'
+      document.getElementById("content").innerHTML= tablehtml;
+       
+
+      }
+      else{
+        var tablehtml = generateTableHMTL(responseData.response);
+        
+        document.getElementById("content").innerHTML= tablehtml;
+      }
+    }
+  }
+
+
+  function displayNextPage(next_page_token)
+  {
+    savecontents = true;
+    // console.log(next_page_token);
+    pageNumber +=1;
+    console.log(pageNumber);
+    var parameters = {
+      next_page_token:next_page_token
+    }
+    $.ajax({
+        type:'GET',
+        // url:'http://localhost:8081/next',
+        url :'http://karthikncs571hw8-env.us-east-2.elasticbeanstalk.com/next',
+        contentType: 'application/json', 
+        data: parameters,
+        
+        success: function (response,status,xhr) {
+          responseData = JSON.parse(response);
+          // document.getElementById("content").innerHTML = "";
+           // console.log(responseData);
+          // console.log(responseData);
+          // displayResultsTable(responseData);
+              if(pageNumber==(pageResults.length))
+              {
+                 pageResults.push(responseData);
+              }
+             
+            
+            
+          
+          
+          document.getElementById("content").innerHTML = "";
+          // console.log(pageResults);
+          // console.log(i);
+          // console.log(pageNumber);
+          if("next_page_token" in responseData)
+          {
+            
+            var tablehtml = generateTableHMTL(responseData);
+            
+            var next_page_token = responseData.next_page_token;
+          
+            
+            next_page_token = next_page_token.replace(/(['"])/g, "\\'");
+            
+            tablehtml += '<div id="buttons-div"><button type="button"  class="btn btn-light btn-outline-secondary" onClick="displayPrevPage()" id="prev">Previous</button><button type="button"  class="btn btn-light btn-outline-secondary" id="next" onClick="displayNextPage(\''+next_page_token+'\')">Next</button></div>';
+            document.getElementById("content").innerHTML= tablehtml;
+
+            // console.log(i)
+            if(placedetails!="")
+            {
+              document.getElementById('deetbutton').disabled = false;
+            var setDetailsEnable = function() {
+        //  console.log(placedetails, placename, placelat, placelon, placeaddress, placeicon);
+              getDetails(placedetails,placename,placelat,placelon,placeaddress,placeicon);
+          
+          // console.log("You clicked something");
+          // console.log(la,lo,olat,olon);
+          };
+
+    document.getElementById('deetbutton').addEventListener('click', setDetailsEnable);
+            }
+            
+          }
+          else{
+           
+            
+            // console.log(pageNumber);
+            var tablehtml = generateTableHMTL(responseData);
+            tablehtml += '<div id="buttons-div"><button type="button" onClick="displayPrevPage()" class="btn btn-light btn-outline-secondary" id="prev">Previous</button></div>';
+            document.getElementById("content").innerHTML= tablehtml;
+            if(placedetails!="")
+            {
+              document.getElementById('deetbutton').disabled = false;
+            var setDetailsEnable = function() {
+        //  console.log(placedetails, placename, placelat, placelon, placeaddress, placeicon);
+              getDetails(placedetails,placename,placelat,placelon,placeaddress,placeicon);
+          
+          // console.log("You clicked something");
+          // console.log(la,lo,olat,olon);
+          };
+
+    document.getElementById('deetbutton').addEventListener('click', setDetailsEnable);
+            }
+
+          }
+          
+          
+        },
+        error: function (xhr,status,error) {
+          console.log(status+" "+xhr);
+          console.log('Error: ' + error.message);
+          console.log("There was an error");
+          }
+      }); 
+    
+  }
+
+  function displayPrevPage()
+  {
+    // console.log(pageResults[i]);
+    savecontents = true;
+    pageNumber = pageNumber-1;
+    // console.log(pageNumber);
+     document.getElementById("content").innerHTML = "";
+    if(pageNumber==0)   //No prev buttons
+    {
+      var tablehtml = generateTableHMTL(pageResults[pageNumber]);
+      var next_page_token = pageResults[pageNumber].next_page_token;
+      
+      next_page_token = next_page_token.replace(/(['"])/g, "\\'");
+      tablehtml += '<div id="buttons-div"><button type="button"  class="btn btn-light btn-outline-secondary" id="next" onClick="displayNextPage(\''+next_page_token+'\')">Next</button></div>';
+      document.getElementById("content").innerHTML= tablehtml;
+      if(placedetails!="")
+            {
+              document.getElementById('deetbutton').disabled = false;
+            var setDetailsEnable = function() {
+        //  console.log(placedetails, placename, placelat, placelon, placeaddress, placeicon);
+              getDetails(placedetails,placename,placelat,placelon,placeaddress,placeicon);
+          
+          // console.log("You clicked something");
+          // console.log(la,lo,olat,olon);
+          };
+
+    document.getElementById('deetbutton').addEventListener('click', setDetailsEnable);
+            }
+    }
+    else     //Yes prev buttons 
+    {
+      var tablehtml = generateTableHMTL(pageResults[pageNumber]);
+      var next_page_token = pageResults[pageNumber].next_page_token;
+      
+      next_page_token = next_page_token.replace(/(['"])/g, "\\'");
+      
+      tablehtml += '<div id="buttons-div"><button type="button" onClick="displayPrevPage()" class="btn btn-light btn-outline-secondary" id="prev">Previous</button><button type="button"  class="btn btn-light btn-outline-secondary" id="next" onClick="displayNextPage(\''+next_page_token+'\')">Next</button></div>';
+      document.getElementById("content").innerHTML= tablehtml;
+      // console.log(i);
+      if(placedetails!="")
+            {
+              document.getElementById('deetbutton').disabled = false;
+            var setDetailsEnable = function() {
+        //  console.log(placedetails, placename, placelat, placelon, placeaddress, placeicon);
+              getDetails(placedetails,placename,placelat,placelon,placeaddress,placeicon);
+          
+          // console.log("You clicked something");
+          // console.log(la,lo,olat,olon);
+          };
+
+    document.getElementById('deetbutton').addEventListener('click', setDetailsEnable);
+            }
+
+    }
+  }
+
+  function generateTableHMTL(responseData)
+  {
+    
+      resultsPage = true; 
+    
+    
+    var tablehtml = '<div class="container"><div  class ="float-right" id="deets"><button id="deetbutton" class="btn btn-outline-secondary" disabled>Details</button></div></div>';
+     tablehtml +=   '<table class="table table-hover">';
+      tablehtml += '<thead><tr><th>#</th><th>Category</th><th>Name</th><th>Address</th><th>Favorite</th><th>Details</th></tr></thead>';
+      var results = responseData["results"];
+      for(var i=0; i<results.length; i++){
+       var placeid= (results[i]["place_id"]);
+       
+       if(placeid == placedetails)
+       {
+        tablehtml += "<tr bgcolor='#FEDF96'>";
+       }
+       else{
+        tablehtml += "<tr>";
+       } 
+       
+      var uename = (results[i]["name"]);
+      var name = (results[i]["name"]);
+      
+      name = name.replace(/(['"])/g, "\\'");
+      var address = (results[i]["vicinity"]);
+      var icon = (results[i]["icon"]);
+      var lat = results[i]["geometry"]["location"]["lat"];
+      var lon = results[i]["geometry"]["location"]["lng"];
+      tablehtml += "<td>"+(i+1)+"</td>";
+      tablehtml += "<td width='90px''><img src='"+icon+"'  width='40px' height='30px'></td>";
+      tablehtml += '<td>'+ uename +'</td>';
+      tablehtml += '<td>' +address + '</td>';
+      if(localStorage.getItem('favlist')==null)
+      {
+        // console.log("entered here")
+        tablehtml += '<td><button class="btn btn-outline-secondary" onClick="setFavourites(\''+placeid+'\',\'' +name +'\',\'' +lat +'\',\'' +lon +'\',\''+address+'\',\''+icon+'\',this)"><i class="far fa-star" ></i></button></td>';
+      }
+      else{
+      var favlist=JSON.parse(localStorage.getItem("favlist"));
+      var flag =false;
+      var index;
+      for(var k=0;k<favlist.length;k++)
+      {
+        if(favlist[k].placeid == placeid)
+        {
+          flag = true;
+          index = k;
+          
+          // favlist = (favlist.splice(index,1));
+        }
+        // console.log(favlist[i].placeid);
+      }
+      if(flag == true)
+      {
+        // console.log("Its not there");
+        tablehtml += '<td><button class="btn btn-outline-secondary" onClick="setFavourites(\''+placeid+'\',\'' +name +'\',\'' +lat +'\',\'' +lon +'\',\''+address+'\',\''+icon+'\',this)"><i class="fas fa-star" ></i></button></td>';
+        
+      }
+    
+      if(flag==false)
+      {
+        // console.log("Its there");
+        tablehtml += '<td><button class="btn btn-outline-secondary" onClick="setFavourites(\''+placeid+'\',\'' +name +'\',\'' +lat +'\',\'' +lon +'\',\''+address+'\',\''+icon+'\',this)"><i class="far fa-star" ></i></button></td>';
+      }
+
+
+      }
+      
+      tablehtml += '<td><button class="btn btn-outline-secondary details-button"   onClick="getDetails(\''+placeid+'\',\'' +name +'\',\'' +lat +'\',\'' +lon +'\',\''+address+'\',\''+icon+'\')" ><i class="fas fa-chevron-right"></i></button></td>';
+      tablehtml += '</tr>';
+      // console.log((i+1)+" "+uename+" "+address);
+      // console.log("\n");
+
+      }
+      tablehtml += "</table>";
+      return tablehtml;
+     
+  }
+
+
+
+var highlight = false;
+  function goBack()
+  {
+    var scope = angular.element(document.getElementById('everything')).scope();
+    scope.showFull = false;
+    scope.$apply();
+    document.getElementById('detail').innerHTML ="";
+    if(results==true){
+
+      // console.log("Entered if")
+      // document.getElementById('content').innerHTML = resultstable;
+      var highlight = true;
+      every= document.getElementById('everything').innerHTML ;
+      console.log("every when inside goback from results ",every);
+      if(pageNumber==0)   //No prev buttons
+    {
+      var tablehtml = generateTableHMTL(pageResults[pageNumber]);
+      var next_page_token = pageResults[pageNumber].next_page_token;
+      
+      next_page_token = next_page_token.replace(/(['"])/g, "\\'");
+      tablehtml += '<div id="buttons-div"><button type="button"  class="btn btn-light btn-outline-secondary" id="next" onClick="displayNextPage(\''+next_page_token+'\')">Next</button></div>';
+      document.getElementById("content").innerHTML= tablehtml;
+    }
+    else     //Yes prev buttons 
+    {
+      var tablehtml = generateTableHMTL(pageResults[pageNumber]);
+      if(pageResults[pageNumber].next_page_token!=undefined)
+      {
+        var next_page_token = pageResults[pageNumber].next_page_token;
+      
+      next_page_token = next_page_token.replace(/(['"])/g, "\\'");
+      
+      tablehtml += '<div id="buttons-div"><button type="button" onClick="displayPrevPage()" class="btn btn-light btn-outline-secondary" id="prev">Previous</button><button type="button"  class="btn btn-light btn-outline-secondary" id="next" onClick="displayNextPage(\''+next_page_token+'\')">Next</button></div>';
+      }
+      else{
+        tablehtml += '<div id="buttons-div"><button type="button" onClick="displayPrevPage()" class="btn btn-light btn-outline-secondary" id="prev">Previous</button></div>';
+      }
+      
+      document.getElementById("content").innerHTML= tablehtml;
+      // console.log(i);
+
+
+    }
+
+    document.getElementById('deetbutton').disabled = false;
+    var setDetailsEnable = function() {
+        //  console.log(placedetails, placename, placelat, placelon, placeaddress, placeicon);
+        getDetails(placedetails,placename,placelat,placelon,placeaddress,placeicon);
+          
+          // console.log("You clicked something");
+          // console.log(la,lo,olat,olon);
+        };
+
+    document.getElementById('deetbutton').addEventListener('click', setDetailsEnable);
+
+
+    }
+    
+    else if(favs==true){
+      // console.log("Entered else");
+      console.log("every inside go back from favs", every);
+      savecontents = false;
+      showFavourites();
+      document.getElementById('deetbutton').disabled = false;
+      var setDetailsEnable = function() {
+        //  console.log(placedetails, placename, placelat, placelon, placeaddress, placeicon);
+        getDetails(placedetails,placename,placelat,placelon,placeaddress,placeicon);
+          
+          // console.log("You clicked something");
+          // console.log(la,lo,olat,olon);
+        };
+
+    document.getElementById('deetbutton').addEventListener('click', setDetailsEnable); 
+
+
+
+    }
+    
+    
+  }
+
+
+  
+  function setFavourites(placeid, name,lat,lon,address,icon,e)
+  {
+    
+    if(localStorage.getItem('favlist')==null)
+    {
+      // console.log("fav list doesnt exist");
+      var favlist = [];
+      var myobj = {placeid:placeid,icon:icon,name:name,address:address,lat:lat,lon};
+      favlist.push(myobj);
+      localStorage.setItem("favlist",JSON.stringify(favlist));
+      // console.log(JSON.parse(localStorage["favlist"]));
+      e.innerHTML ='<i class="fas fa-star" ></i>'
+    }
+    else{
+      // console.log("fav list exists");
+      var favlist=JSON.parse(localStorage.getItem("favlist"));
+      var flag =false;
+      var index;
+      for(var i=0;i<favlist.length;i++)
+      {
+        if(favlist[i].placeid == placeid)
+        {
+          flag = true;
+          index = i;
+          e.innerHTML ='<i class="far fa-star" ></i>';
+          // favlist = (favlist.splice(index,1));
+        }
+        // console.log(favlist[i].placeid);
+      }
+      if(flag == true)
+      {
+        
+        favlist.splice(index,1);
+        // console.log(favlist);
+        localStorage.setItem("favlist",JSON.stringify(favlist));
+        
+      }
+    
+      if(flag==false)
+      {
+        var myobj = {placeid:placeid,icon:icon,name:name,address:address,lat:lat,lon};
+        favlist.push(myobj);
+        localStorage.setItem("favlist",JSON.stringify(favlist));
+        e.innerHTML ='<i class="fas fa-star" ></i>';
+      }
+    }
+    
+    
+  }
+   
+  var contentHTML;
+  var map ;
+  var panorama;
+  var twitterurl;
+  var placedetails="";
+  var placename="";
+  var placeaddress="";
+  var placelat="";
+  var placelon="";
+  var placeicon="";
+  var toogledisable;
+  var city;
+  var state;
+  var country;
+  var norecords = false;
+  function getDetails(placeid, name,lat, lon,address,icon)
+  {
+    placedetails = placeid;
+    placename = name;
+    placeaddress = address;
+    placelat = lat;
+    placelon = lon;
+    placeicon = icon;
+    if(inresults==false)
+    {
+      resultsPage = true; 
+    }
+    else{
+      resultsPage = false;
+    }
+
+    console.log("Results Page "+resultsPage);
+    
+    savecontents = true;
+    var scope = angular.element(document.getElementById('everything')).scope();
+    scope.showFull = true;
+    scope.$apply();
+
+    if(results==true)
+    {
+      resultstable = document.getElementById("content").innerHTML;
+    }
+
+    // if(favs==true)
+    // {
+    //   favtable = document.getElementById("content").innerHTML;
+    // }
+    // console.log(content);
+    // console.log(placeid);
+    // console.log(name);
+    // console.log(lat + " "+ lon);
+    document.getElementById("content").innerHTML= "";
+    // console.log(document.getElementById("content").innerHTML);
+    var detailHTML;
+  //   setTimeout(function(){ 
+  //     document.getElementById("content").style.display = "block";
+  //     document.getElementById("content").innerHTML = contentHTML;
+
+  // }, 3000);
+      var uaname = name; 
+      name = uaname.replace(/(['"])/g, "\\'");
+      if(localStorage.getItem('favlist')==null)
+      {
+        detailHTML =  '<div class="container">'+
+'     <div class="col-sm-12" style="text-align:center" id="header">'+
+'     </div>  '+
+'     <div id="backandfav">'+
+'         <div class="backbutton">'+
+'            <button  class="btn btn-outline-secondary" ng-click="showFull=false" onClick=goBack()>'+
+'                <i class="fas fa-chevron-left"></i>List'+
+'            </button>'+
+'         </div>'+
+''+
+'         <div class="favtwit">'+
+'            <button  type="button" class="btn btn-outline-secondary" disabled id="favo" onClick="setFavourites(\''+placeid+'\',\'' +name +'\',\'' +lat +'\',\'' +lon +'\',\''+address+'\',\''+icon+'\',this)">'+
+'            <i class="far fa-star" ></i></button>'+
+'            '+
+'            '+
+'            <button  type="button" class="btn btn-light" disabled id="twitter">'+
+'                <img id=\'twitterimage\' src="http://cs-server.usc.edu:45678/hw/hw8/images/Twitter.png">'+
+'            </button>'+
+'         </div>'+
+'       </div>  '+
+'       <br>'+
+'  '+
+'  </div>';
+      }
+      else{
+      var favlist=JSON.parse(localStorage.getItem("favlist"));
+      var flag =false;
+      var index;
+      for(var k=0;k<favlist.length;k++)
+      {
+        if(favlist[k].placeid == placeid)
+        {
+          flag = true;
+          index = k;
+          
+          // favlist = (favlist.splice(index,1));
+        }
+        // console.log(favlist[i].placeid);
+      }
+      if(flag == true)
+      {
+        detailHTML =  '<div class="container">'+
+'     <div class="col-sm-12" style="text-align:center" id="header">'+
+'     </div>  '+
+'     <div id="backandfav">'+
+'         <div class="backbutton">'+
+'            <button  class="btn btn-outline-secondary" ng-click="showFull=false" onClick=goBack()>'+
+'                <i class="fas fa-chevron-left"></i>List'+
+'            </button>'+
+'         </div>'+
+''+
+'         <div class="favtwit">'+
+'            <button  type="button" class="btn btn-outline-secondary" disabled id="favo" onClick="setFavourites(\''+placeid+'\',\'' +name +'\',\'' +lat +'\',\'' +lon +'\',\''+address+'\',\''+icon+'\',this)">'+
+'            <i class="fas fa-star" ></i></button>'+
+'            '+
+'            '+
+'            <button  type="button" class="btn btn-light" disabled id="twitter">'+
+'                <img id=\'twitterimage\' src="http://cs-server.usc.edu:45678/hw/hw8/images/Twitter.png">'+
+'            </button>'+
+'         </div>'+
+'       </div>  '+
+'       <br>'+
+'  '+
+'  </div>';
+        
+      }
+    
+      if(flag==false)
+      { 
+        detailHTML =  '<div class="container">'+
+'     <div class="col-sm-12" style="text-align:center" id="header">'+
+'     </div>  '+
+'     <div id="backandfav">'+
+'         <div class="backbutton">'+
+'            <button  class="btn btn-outline-secondary" ng-click="showFull=false" onClick=goBack()>'+
+'                <i class="fas fa-chevron-left"></i>List'+
+'            </button>'+
+'         </div>'+
+''+
+'         <div class="favtwit">'+
+'            <button  type="button" class="btn btn-outline-secondary" disabled id="favo" onClick="setFavourites(\''+placeid+'\',\'' +name +'\',\'' +lat +'\',\'' +lon +'\',\''+address+'\',\''+icon+'\',this)">'+
+'            <i class="far fa-star" ></i></button>'+
+'            '+
+'            '+
+'            <button  type="button" class="btn btn-light" disabled id="twitter">'+
+'                <img id=\'twitterimage\' src="http://cs-server.usc.edu:45678/hw/hw8/images/Twitter.png">'+
+'            </button>'+
+'         </div>'+
+'       </div>  '+
+'       <br>'+
+'  '+
+'  </div>';
+        
+      }
+
+
+      }
+        
+    detailHTML += (generateTabHTML());
+
+    var la = parseFloat(lat);
+    var lo = parseFloat(lon);
+    // console.log(detailHTML);
+    
+
+
+    
+    document.getElementById('detail').innerHTML = detailHTML;
+    document.getElementById('header').innerHTML = '<h5>' + uaname + '</h5>';
+     // console.log(detailHTML);
+    
+
+     
+     var directionsDisplay = new google.maps.DirectionsRenderer;
+    var directionsService = new google.maps.DirectionsService;
+    var pos = {lat:  la, lng: lo};
+     map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat:  la, lng: lo},
+          zoom: 15
+        });
+
+    var service = new google.maps.places.PlacesService(map);
+    service.getDetails({
+          placeId: placeid
+        }, function(place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+              var marker = new google.maps.Marker({
+              map: map,
+              position: place.geometry.location
+            });
+     directionsDisplay.setMap(map);
+     directionsDisplay.setPanel(document.getElementById('right-panel'));
+
+
+      document.getElementById('favo').disabled = false;
+      document.getElementById('twitter').disabled = false;
+
+
+      var text = 'Check out '+uaname+" located at "+address+" Website:";
+      text = encodeURIComponent(text);
+      if('website' in place)
+      {
+        var url = encodeURIComponent(place.website);
+      }
+      else{
+        var url = encodeURIComponent(place.url);
+      }  
+
+     
+      twitterurl ='https://twitter.com/intent/tweet?text='+text+'&url='+url+';hashtags=TravelAndEntertainmentSearch'; 
+     console.log(twitterurl);
+
+     document.getElementById('twitter').addEventListener('click',showtweet);
+     document.getElementById('twitterimage').addEventListener('click',showtweet);
+     
+      console.log(place);
+      var add = place.address_components;
+      for (var z=0; z<add.length; z++)
+      {
+        if(add[z].types[0]=="locality"){
+          city = add[z].long_name;
+        }
+        if(add[z].types[0]=="country")
+        {
+          country = add[z].short_name;
+        }
+        if(add[z].types[0]=="administrative_area_level_1")
+        {
+          state = add[z].short_name;
+        }
+      }
+
+      console.log("City "+city+" Country "+country+" State "+state);
+
+     
+      document.getElementById('Reviews').innerHTML = reviewHTML();
+      document.getElementById('selectReview').innerHTML = reviewTypeHTML();
+      document.getElementById('selectOrder').innerHTML =  reviewOrderHTML();
+
+      if('reviews' in place)
+     {
+      reviews = place.reviews;
+
+      document.getElementById('allReviews').innerHTML = "";
+      for(var k=0; k<reviews.length; k++)
+      {
+        var time = moment.unix(reviews[k].time).format('YYYY-MM-DD HH:mm:ss') ;
+        var userReviews ="";
+        // console.log(time, place.reviews[k].time);
+        userReviews +=  '<div class="row userReviews">';
+        if('author_url' in reviews[k])
+        {
+          userReviews += '<div style="width:10%;display:inline-block"><a href="'+reviews[k].author_url+'" target="new"><img  width="80%" src="'+reviews[k].profile_photo_url+'"></a></div>';
+          userReviews += '<div style="width:90%;display:inline-block">';
+          userReviews += '<div id="authname"><a href="'+reviews[k].author_url+'" target="new">'+reviews[k].author_name+'</a></div>';
+        }
+        else{
+          userReviews += '<div style="width:10%;display:inline-block"><img width="80%" src="'+reviews[k].profile_photo_url+'"></div>';
+          userReviews += '<div style="width:90%;display:inline-block">';
+          userReviews += '<div id="authname">'+reviews[k].author_name+'</div>';
+        }
+        
+        
+        userReviews += '<div><div id="rateYo'+k+'" style="display:inline-block"></div><div id="time" style="display:inline-block">'+time+'</div></div>'
+        userReviews += '<div>'+reviews[k].text+'</div>';
+        userReviews+='</div>'
+        userReviews += '</div>';
+        document.getElementById('allReviews').innerHTML += userReviews; 
+
+         $(function () {
+        var percent = ((reviews[k].rating)/Math.ceil(reviews[k].rating))*100
+        percent += "%";
+        $("#rateYo"+k).rateYo({
+        rating: percent,
+        numStars: Math.ceil(reviews[k].rating),
+        starWidth: "16px",
+        maxValue: 5,
+        readOnly: true
+        });
+        });
+
+        // console.log(place.reviews[k].rating, Math.ceil(place.reviews[k].rating)) 
+      }
+
+     
+      }
+      else
+      {
+        reviews = [];
+        document.getElementById('allReviews').innerHTML = '<div class="alert alert-warning" role="alert" style="margin-top:10%;">No records</div>';
+
+      }
+
+
+
+
+
+
+     autocomplete2 = new google.maps.places.Autocomplete(
+            /** @type {!HTMLInputElement} */(document.getElementById('autocomplete2')),
+            {types: ['geocode']});
+     autocomplete2.addListener('place_changed', fillInAddress2);
+
+     panorama = map.getStreetView();
+     panorama.setPosition(pos);
+        panorama.setPov(/** @type {google.maps.StreetViewPov} */({
+          heading: 265,
+          pitch: 0
+      }));
+     
+     if(document.myform.locradio[0].checked)
+    {
+      document.getElementById("autocomplete2").value = "Your Location"; 
+    }
+    if(document.myform.locradio[1].checked)
+    {
+      document.getElementById("autocomplete2").value = document.getElementById('autocomplete').value;
+    }
+
+    var getDirections = function() {
+        var mode = document.getElementById("mode").value;
+        marker.setMap(null);
+        var olat = document.myform.latitude.value;
+        var olon = document.myform.longitude.value;
+        
+        
+
+          calculateAndDisplayRoute(directionsService, directionsDisplay,place.geometry.location.lat(),place.geometry.location.lng(),olat,olon,mode,document.getElementById("autocomplete2").value);
+        
+          
+          // console.log("You clicked something");
+          // console.log(la,lo,olat,olon);
+        };
+
+    document.getElementById('direction').addEventListener('click', getDirections);
+
+    var nameAddress = uaname + ", " +place.formatted_address;
+    // console.log(nameAddress);
+    document.getElementById("to").value = nameAddress;
+    document.getElementById("to").disabled = true;
+
+    
+
+    var infohtml = '<table class="table table-striped" style="margin-top:10px">';
+    infohtml += '<tbody>';
+    if('formatted_address' in place)
+    {
+      infohtml += '<tr><th style="padding-right:5%">Address</th><td >'+place.formatted_address+'</td></tr>';
+    }
+    if('international_phone_number' in place)
+    {
+      infohtml += '<tr><th>Phone Number</th><td >'+place.international_phone_number+'</td></tr>';
+    }
+    if('price_level' in place)
+    {
+      var priceString = "";
+      for( var k=0; k<place.price_level; k++){
+        priceString += "$";
+      }
+      infohtml += '<tr><th>Price Level</th><td >'+priceString+'</td></tr>';
+    }
+    if('rating' in place)
+    {
+      infohtml += '<tr><th>Rating</th><td >'+place.rating+'<div id="rateYo" style="display:inline-block"></div></td></tr>';
+    }
+    if('url' in place)
+    {
+      infohtml += '<tr><th>Google Page</th><td><a target="_blank" href="'+place.url+'">'+place.url+'</a></td></tr>';
+    }
+    if('website' in place)
+    {
+      infohtml += '<tr><th>Website</th><td><a target="_blank" href="'+place.website+'">'+place.website+'</a></td></tr>';
+    }
+    if('opening_hours' in place)
+    {
+      // var day = moment().format('dddd').utcOffset(place.utc_offset);
+      var date = moment().utcOffset(place.utc_offset);
+      // console.log(date.day());
+      if(date.day()==0)
+      {
+        var dayOfWeek = 6;
+      }
+      else{
+        var dayOfWeek = date.day()-1;
+      }
+      
+      if(place.opening_hours.open_now)
+      {
+        var str = place.opening_hours.weekday_text[dayOfWeek];
+        var text = str.substr(str.indexOf(' ')+1);
+        var modal = modalHTML(dayOfWeek, place.opening_hours.weekday_text);
+        infohtml += '<tr><th>Hours</th><td>Open Now: '+ text+' <a href="" data-toggle="modal" data-target="#exampleModal">Daily Open Hours</a>'+modal+'</td></tr>';
+      }
+      else
+      {
+        var str = place.opening_hours.weekday_text[dayOfWeek];
+        var text = str.substr(str.indexOf(' ')+1);
+        var modal = modalHTML(dayOfWeek, place.opening_hours.weekday_text);
+        infohtml += '<tr><th>Hours</th><td>Closed <a href="" data-toggle="modal" data-target="#exampleModal">Daily Open Hours</a>'+modal+'</td></tr>';
+
+      }
+
+    }
+    infohtml += '</tbody></table>';
+    document.getElementById('Info').innerHTML = infohtml;
+    if('photos' in place)
+    {
+      var photoshtml ="";
+      var onehtml="";
+      var twohtml=""; 
+      var threehtml="";
+      var fourhtml = "";
+      for( var k=0; k<place.photos.length; k++){
+        if(k%4==0)
+        {
+          
+          onehtml += "<a href='" +place.photos[k].getUrl({'maxWidth': 2000, 'maxHeight': 2000})+ "' target='new'><img src ='" +place.photos[k].getUrl({'maxWidth': 750, 'maxHeight': 750})+"' style='width:100%' class='responsive-image'>";
+        }
+        if(k%4==1)
+        {
+          twohtml += "<a href='" +place.photos[k].getUrl({'maxWidth': 2000, 'maxHeight': 2000})+ "' target='new'><img src ='" +place.photos[k].getUrl({'maxWidth': 750, 'maxHeight': 750})+"' style='width:100%' class='responsive-image'>";
+        }
+        if(k%4==2)
+        {
+          threehtml += "<a href='" +place.photos[k].getUrl({'maxWidth': 2000, 'maxHeight': 2000})+ "' target='new'><img src ='" +place.photos[k].getUrl({'maxWidth': 750, 'maxHeight': 750})+"' style='width:100%' class='responsive-image'>";
+        }
+        if(k%4==3)
+        {
+          fourhtml += "<a href='" +place.photos[k].getUrl({'maxWidth': 2000, 'maxHeight': 2000})+ "' target='new'><img src ='" +place.photos[k].getUrl({'maxWidth': 750, 'maxHeight': 750})+"' style='width:100%' class='responsive-image'>";
+        }
+
+      }
+      var photoshtml = '<div class="grid"><div class="cell" id="one"></div><div class="cell" id="two"></div><div class="cell" id="three"></div><div class="cell" id="four"></div></div>';
+      document.getElementById('Photos').innerHTML = photoshtml;
+      document.getElementById('one').innerHTML = onehtml;
+      document.getElementById('two').innerHTML = twohtml;
+      document.getElementById('three').innerHTML = threehtml;
+      document.getElementById('four').innerHTML = fourhtml;
+      
+
+
+
+
+    }
+    else
+    {
+      document.getElementById('Photos').innerHTML = '<div class="alert alert-warning" role="alert" style="margin-top:10%;">No records</div>';
+
+    }
+    
+    $(function () {
+      var per = ((place.rating)/Math.ceil(place.rating))*100;
+      per+="%";
+      $("#rateYo").rateYo({
+      rating: per,
+      numStars: Math.ceil(place.rating),
+      normalFill: "transparent",
+      starWidth: "16px",
+      readOnly: true
+      });
+ 
+    });
+
+
+ console.log("every inside place details", every);
+ console.log("Next up is the html inside every")   
+ console.log(document.getElementById('everything').innerHTML);             
+ 
+}
+});
+}
+
+
+
+  function showtweet()
+  {
+  console.log(twitterurl);
+  window.open(twitterurl,"_blank","height=1000,width=1000,toolbar=yes,scrollbars=yes");
+  }
+
+ function directiondisable()
+ {
+  if(document.getElementById("autocomplete2").value.trim()=='')
+    {
+      document.getElementById('direction').disabled = true;
+    }
+    else
+    {
+      document.getElementById('direction').disabled = false;
+    }
+ } 
+
+
+
+var reviews=[];
+function showGoogleReviews()
+  {
+    document.getElementById('reviewButton').innerHTML = 'Google Reviews';
+    console.log(reviews);
+     
+
+    showyelp = false;
+    document.getElementById('reviewOrder').innerHTML = 'Default Order';
+    if(reviews.length!=0)
+    {
+
+
+    document.getElementById('allReviews').innerHTML = "";
+    document.getElementById("allReviews").style.display = 'none';
+    $("#allReviews").fadeIn("slow");
+    for(var k=0; k<reviews.length; k++)
+      {
+        var time = moment.unix(reviews[k].time).format('YYYY-MM-DD HH:mm:ss') ;
+        var userReviews ="";
+        // console.log(time, place.reviews[k].time);
+        userReviews +=  '<div class="row userReviews">';
+        if('author_url' in reviews[k])
+        {
+          userReviews += '<div style="width:10%;display:inline-block"><a href="'+reviews[k].author_url+'" target="new"><img  width="80%" src="'+reviews[k].profile_photo_url+'"></a></div>';
+          userReviews += '<div style="width:90%;display:inline-block">';
+          userReviews += '<div id="authname"><a href="'+reviews[k].author_url+'" target="new">'+reviews[k].author_name+'</a></div>';
+        }
+        else{
+          userReviews += '<div style="width:10%;display:inline-block"><img width="80%" src="'+reviews[k].profile_photo_url+'"></div>';
+          userReviews += '<div style="width:90%;display:inline-block">';
+          userReviews += '<div id="authname">'+reviews[k].author_name+'</div>';
+        }
+        
+        
+        userReviews += '<div><div id="rateYo'+k+'" style="display:inline-block"></div><div id="time" style="display:inline-block">'+time+'</div></div>'
+        userReviews += '<div>'+reviews[k].text+'</div>';
+        userReviews+='</div>'
+        userReviews += '</div>';
+        document.getElementById('allReviews').innerHTML += userReviews; 
+
+         $(function () {
+        var percent = ((reviews[k].rating)/Math.ceil(reviews[k].rating))*100
+        percent += "%";
+        $("#rateYo"+k).rateYo({
+        rating: percent,
+        numStars: Math.ceil(reviews[k].rating),
+        starWidth: "16px",
+        maxValue: 5,
+        readOnly: true
+        });
+        });
+
+        // console.log(place.reviews[k].rating, Math.ceil(place.reviews[k].rating)) 
+      }
+    }
+    else
+    {
+      document.getElementById("allReviews").style.display = 'none';
+    $("#allReviews").fadeIn("slow");
+    document.getElementById('allReviews').innerHTML = '<div class="alert alert-warning" role="alert" style="margin-top:10%;">No records</div>';
+    }
+
+  }
+  var yelpreviews = [];
+  var showyelp = false;
+  function showYelpReviews()
+  {
+     document.getElementById('reviewButton').innerHTML = 'Yelp Reviews';
+     document.getElementById('reviewOrder').innerHTML = 'Default Order';
+     showyelp = true;
+     var parameters = {
+      name:placename,
+      address:placeaddress,
+      city:city,
+      state:state,
+      country:country
+    }
+      // console.log(parameters)
+      var progress = '<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 50%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div></div>';
+    document.getElementById("allReviews").innerHTML = progress;
+      $.ajax({
+        type:'GET',
+        // url:'http://localhost:8081/yelpmatch',
+        url : 'http://karthikncs571hw8-env.us-east-2.elasticbeanstalk.com/yelpmatch',
+        contentType: 'application/json', 
+        data: parameters,
+        
+        success: function (response,status,xhr) {
+          responseData = JSON.parse(response);
+          // document.getElementById("content").innerHTML = "";
+          console.log(responseData);
+          document.getElementById("allReviews").style.display = 'none';
+          $("#allReviews").fadeIn("slow");
+          if('reviews' in responseData)
+          {
+            yelpreviews = responseData.reviews;
+            document.getElementById('allReviews').innerHTML ="";
+      for(var k=0; k<yelpreviews.length; k++)
+      { 
+        
+        var time = yelpreviews[k].time_created;
+        var userReviews ="";
+        // console.log(time, reviews[k].time);
+        userReviews +=  '<div class="row userReviews">';
+       
+
+        if('url' in yelpreviews[k])
+        {
+          userReviews += '<div style="width:10%;display:inline-block"><a href="'+yelpreviews[k].url+'" target="new"><img width="80%" style="border-radius:50%" src="'+yelpreviews[k].user.image_url+'"></a></div>';
+          userReviews += '<div style="width:90%;display:inline-block">';
+          userReviews += '<div id="authname"><a href="'+yelpreviews[k].url+'" target="new">'+yelpreviews[k].user.name+'</a></div>';
+        }
+        else{
+          userReviews += '<div style="width:10%;display:inline-block"><img style="border-radius:50%" width="80%" src="'+yelpreviews[k].user.image_url+'"></div>';
+          userReviews += '<div style="width:90%;display:inline-block">';
+          userReviews += '<div id="authname">'+yelpreviews[k].user.name+'</div>';
+        }
+
+
+
+        userReviews += '<div><div id="rateYo'+k+'" style="display:inline-block"></div><div id="time" style="display:inline-block">'+time+'</div></div>'
+        userReviews += '<div>'+yelpreviews[k].text+'</div>';
+        userReviews+='</div>'
+        userReviews += '</div>';
+        document.getElementById('allReviews').innerHTML += userReviews; 
+
+         $(function () {
+        var percent = ((yelpreviews[k].rating)/Math.ceil(yelpreviews[k].rating))*100
+        percent += "%";
+        $("#rateYo"+k).rateYo({
+        rating: percent,
+        numStars: Math.ceil(yelpreviews[k].rating),
+        starWidth: "16px",
+        maxValue: 5,
+        readOnly: true
+        });
+        });
+
+        // console.log(place.reviews[k].rating, Math.ceil(place.reviews[k].rating)) 
+      }
+          
+
+          }
+          else
+          {
+
+            document.getElementById("allReviews").style.display = 'none';
+            $("#allReviews").fadeIn("slow");
+            document.getElementById('allReviews').innerHTML = '<div class="alert alert-warning" role="alert" style="margin-top:10%;">No records</div>';
+          }
+          // console.log(responseData);
+          // console.log(responseData);
+          // displayResultsTable(responseData);
+          // savecontents = true;
+          
+        },
+        error: function (xhr,status,error) {
+          console.log(status+" "+xhr);
+          console.log('Error: ' + error.message);
+          console.log("There was an error");
+          document.getElementById("allReviews").style.display = 'none';
+            $("#allReviews").fadeIn("slow");
+            document.getElementById('allReviews').innerHTML = '<div class="alert alert-warning" role="alert" style="margin-top:10%;">No records</div>'; 
+          // document.getElementById('content').innerHTML = '<div class="alert alert-danger" role="alert">Failed to get search Results</div>';
+          // savecontents = true;
+          }
+      }); 
+
+  }
+
+
+  function defaultOrder(){
+    document.getElementById('reviewOrder').innerHTML = 'Default Order';
+    if(yelpreviews.length>0 && showyelp==true)
+    {
+      document.getElementById('allReviews').innerHTML ="";
+      for(var k=0; k<yelpreviews.length; k++)
+      { 
+        
+        var time = yelpreviews[k].time_created;
+        var userReviews ="";
+        // console.log(time, reviews[k].time);
+        userReviews +=  '<div class="row userReviews">';
+
+        if('url' in yelpreviews[k])
+        {
+          userReviews += '<div style="width:10%;display:inline-block"><a href="'+yelpreviews[k].url+'" target="new"><img style="border-radius:50%" width="80%" src="'+yelpreviews[k].user.image_url+'"></a></div>';
+          userReviews += '<div style="width:90%;display:inline-block">';
+          userReviews += '<div id="authname"><a href="'+yelpreviews[k].url+'" target="new">'+yelpreviews[k].user.name+'</a></div>';
+        }
+        else{
+          userReviews += '<div style="width:10%;display:inline-block"><img style="border-radius:50%" width="80%" src="'+yelpreviews[k].user.image_url+'"></div>';
+          userReviews += '<div style="width:90%;display:inline-block">';
+          userReviews += '<div id="authname">'+yelpreviews[k].user.name+'</div>';
+        }
+
+
+
+        userReviews += '<div><div id="rateYo'+k+'" style="display:inline-block"></div><div id="time" style="display:inline-block">'+time+'</div></div>'
+        userReviews += '<div>'+yelpreviews[k].text+'</div>';
+        userReviews+='</div>'
+        userReviews += '</div>';
+        document.getElementById('allReviews').innerHTML += userReviews; 
+
+         $(function () {
+        var percent = ((yelpreviews[k].rating)/Math.ceil(yelpreviews[k].rating))*100
+        percent += "%";
+        $("#rateYo"+k).rateYo({
+        rating: percent,
+        numStars: Math.ceil(yelpreviews[k].rating),
+        starWidth: "16px",
+        maxValue: 5,
+        readOnly: true
+        });
+        });
+
+        // console.log(place.reviews[k].rating, Math.ceil(place.reviews[k].rating)) 
+      }
+    }
+    
+    if(reviews.length !=0  && showyelp==false)
+    {
+      document.getElementById('allReviews').innerHTML ="";
+      for(var k=0; k<reviews.length; k++)
+      { 
+        
+        var time = moment.unix(reviews[k].time).format('YYYY-MM-DD HH:mm:ss') ;
+        var userReviews ="";
+        // console.log(time, reviews[k].time);
+        userReviews +=  '<div class="row userReviews">';
+        
+        if('author_url' in reviews[k])
+        {
+          userReviews += '<div style="width:10%;display:inline-block"><a href="'+reviews[k].author_url+'" target="new"><img width="80%" src="'+reviews[k].profile_photo_url+'"></a></div>';
+          userReviews += '<div style="width:90%;display:inline-block">';
+          userReviews += '<div id="authname"><a href="'+reviews[k].author_url+'" target="new">'+reviews[k].author_name+'</a></div>';
+        }
+        else{
+          userReviews += '<div style="width:10%;display:inline-block"><img width="80%" src="'+reviews[k].profile_photo_url+'"></div>';
+          userReviews += '<div style="width:90%;display:inline-block">';
+          userReviews += '<div id="authname">'+reviews[k].author_name+'</div>';
+        }
+
+
+
+        userReviews += '<div><div id="rateYo'+k+'" style="display:inline-block"></div><div id="time" style="display:inline-block">'+time+'</div></div>'
+        userReviews += '<div>'+reviews[k].text+'</div>';
+        userReviews+='</div>'
+        userReviews += '</div>';
+        document.getElementById('allReviews').innerHTML += userReviews; 
+
+         $(function () {
+        var percent = ((reviews[k].rating)/Math.ceil(reviews[k].rating))*100
+        percent += "%";
+        $("#rateYo"+k).rateYo({
+        rating: percent,
+        numStars: Math.ceil(reviews[k].rating),
+        starWidth: "16px",
+        maxValue: 5,
+        readOnly: true
+        });
+        });
+
+        // console.log(place.reviews[k].rating, Math.ceil(place.reviews[k].rating)) 
+        }
+      }
+    
+  }
+
+   function highestRating(){
+    document.getElementById('reviewOrder').innerHTML = 'Highest Rating';
+    if(yelpreviews.length>0 && showyelp==true)
+    {
+        var sortHighest = yelpreviews.slice();
+        sortHighest = sortByKey(sortHighest,'rating');
+        sortHighest = sortHighest.reverse();
+        console.log(sortHighest);
+        document.getElementById('allReviews').innerHTML ="";
+      for(var k=0; k<sortHighest.length; k++)
+      { 
+        console.log(sortHighest[k].time_created);
+        var time = sortHighest[k].time_created;
+        var userReviews ="";
+        // console.log(time, reviews[k].time);
+        userReviews +=  '<div class="row userReviews">';
+        
+
+        if('url' in sortHighest[k])
+        {
+          userReviews += '<div style="width:10%;display:inline-block"><a href="'+sortHighest[k].url+'" target="new"><img style="border-radius:50%" width="80%" src="'+sortHighest[k].user.image_url+'"></a></div>';
+          userReviews += '<div style="width:90%;display:inline-block">';
+          userReviews += '<div id="authname"><a href="'+sortHighest[k].url+'" target="new">'+sortHighest[k].user.name+'</a></div>';
+        }
+        else{
+          userReviews += '<div style="width:10%;display:inline-block"><img style="border-radius:50%" width="80%" src="'+sortHighest[k].user.image_url+'"></div>';
+          userReviews += '<div style="width:90%;display:inline-block">';
+          userReviews += '<div id="authname">'+sortHighest[k].user.name+'</div>';
+        }
+
+
+
+
+
+        userReviews += '<div><div id="rateYo'+k+'" style="display:inline-block"></div><div id="time" style="display:inline-block">'+time+'</div></div>'
+        userReviews += '<div>'+sortHighest[k].text+'</div>';
+        userReviews+='</div>'
+        userReviews += '</div>';
+        document.getElementById('allReviews').innerHTML += userReviews; 
+
+         $(function () {
+        var percent = ((sortHighest[k].rating)/Math.ceil(sortHighest[k].rating))*100
+        percent += "%";
+        $("#rateYo"+k).rateYo({
+        rating: percent,
+        numStars: Math.ceil(sortHighest[k].rating),
+        starWidth: "16px",
+        maxValue: 5,
+        readOnly: true
+        });
+        });
+
+        // console.log(place.reviews[k].rating, Math.ceil(place.reviews[k].rating)) 
+      }
+    }
+    if(reviews.length !=0  && showyelp==false)
+    {
+    var sortHighest = reviews.slice();
+    sortHighest = sortByKey(sortHighest,'rating');
+    sortHighest = sortHighest.reverse();
+    // console.log(reviews);
+    // console.log(sortHighest);
+    
+    
+      document.getElementById('allReviews').innerHTML ="";
+      for(var k=0; k<sortHighest.length; k++)
+      { 
+        
+        var time = moment.unix(sortHighest[k].time).format('YYYY-MM-DD HH:mm:ss') ;
+        var userReviews ="";
+        // console.log(time, reviews[k].time);
+        userReviews +=  '<div class="row userReviews">';
+        
+
+        if('author_url' in sortHighest[k])
+        {
+          userReviews += '<div style="width:10%;display:inline-block"><a href="'+sortHighest[k].author_url+'" target="new"><img width="80%" src="'+sortHighest[k].profile_photo_url+'"></a></div>';
+          userReviews += '<div style="width:90%;display:inline-block">';
+          userReviews += '<div id="authname"><a href="'+sortHighest[k].author_url+'" target="new">'+sortHighest[k].author_name+'</a></div>';
+        }
+        else{
+          userReviews += '<div style="width:10%;display:inline-block"><img width="80%" src="'+sortHighest[k].profile_photo_url+'"></div>';
+          userReviews += '<div style="width:90%;display:inline-block">';
+          userReviews += '<div id="authname">'+sortHighest[k].author_name+'</div>';
+        }
+
+
+
+
+        userReviews += '<div><div id="rateYo'+k+'" style="display:inline-block"></div><div id="time" style="display:inline-block">'+time+'</div></div>'
+        userReviews += '<div>'+sortHighest[k].text+'</div>';
+        userReviews+='</div>'
+        userReviews += '</div>';
+        document.getElementById('allReviews').innerHTML += userReviews; 
+
+         $(function () {
+        var percent = ((sortHighest[k].rating)/Math.ceil(sortHighest[k].rating))*100
+        percent += "%";
+        $("#rateYo"+k).rateYo({
+        rating: percent,
+        numStars: Math.ceil(sortHighest[k].rating),
+        starWidth: "16px",
+        maxValue: 5,
+        readOnly: true
+        });
+        });
+
+        // console.log(place.reviews[k].rating, Math.ceil(place.reviews[k].rating)) 
+      
+    }
+  }
+
+  }
+   function lowestRating(){
+    document.getElementById('reviewOrder').innerHTML = 'Lowest Rating';
+     if(yelpreviews.length>0 && showyelp==true)
+    {
+        var sortLowest = yelpreviews.slice();
+        sortLowest = sortByKey(sortLowest,'rating');
+        
+        document.getElementById('allReviews').innerHTML ="";
+      for(var k=0; k<sortLowest.length; k++)
+      { 
+        
+        var time = sortLowest[k].time_created;
+        var userReviews ="";
+        // console.log(time, reviews[k].time);
+        userReviews +=  '<div class="row userReviews">';
+       
+
+        if('url' in sortLowest[k])
+        {
+          userReviews += '<div style="width:10%;display:inline-block"><a href="'+sortLowest[k].url+'" target="new"><img style="border-radius:50%" width="80%" src="'+sortLowest[k].user.image_url+'"></a></div>';
+          userReviews += '<div style="width:90%;display:inline-block">';
+          userReviews += '<div id="authname"><a href="'+sortLowest[k].url+'" target="new">'+sortLowest[k].user.name+'</a></div>';
+        }
+        else{
+          userReviews += '<div style="width:10%;display:inline-block"><img style="border-radius:50%" width="80%" src="'+sortLowest[k].user.image_url+'"></div>';
+          userReviews += '<div style="width:90%;display:inline-block">';
+          userReviews += '<div id="authname">'+sortLowest[k].user.name+'</div>';
+        }
+
+
+
+        userReviews += '<div><div id="rateYo'+k+'" style="display:inline-block"></div><div id="time" style="display:inline-block">'+time+'</div></div>'
+        userReviews += '<div>'+sortLowest[k].text+'</div>';
+        userReviews+='</div>'
+        userReviews += '</div>';
+        document.getElementById('allReviews').innerHTML += userReviews; 
+
+         $(function () {
+        var percent = ((sortLowest[k].rating)/Math.ceil(sortLowest[k].rating))*100
+        percent += "%";
+        $("#rateYo"+k).rateYo({
+        rating: percent,
+        numStars: Math.ceil(sortLowest[k].rating),
+        starWidth: "16px",
+        maxValue: 5,
+        readOnly: true
+        });
+        });
+
+        // console.log(place.reviews[k].rating, Math.ceil(place.reviews[k].rating)) 
+      }
+    }
+    if(reviews.length !=0  && showyelp==false)
+    {
+
+
+    var sortLowest = reviews.slice();
+    sortLowest = sortByKey(sortLowest,'rating');
+    
+    // console.log(reviews);
+    // console.log(sortHighest);
+   
+      document.getElementById('allReviews').innerHTML ="";
+      for(var k=0; k<sortLowest.length; k++)
+      { 
+        
+        var time = moment.unix(sortLowest[k].time).format('YYYY-MM-DD HH:mm:ss') ;
+        var userReviews ="";
+        // console.log(time, reviews[k].time);
+        userReviews +=  '<div class="row userReviews">';
+        
+
+        if('author_url' in sortLowest[k])
+        {
+          userReviews += '<div style="width:10%;display:inline-block"><a href="'+sortLowest[k].author_url+'" target="new"><img width="80%" src="'+sortLowest[k].profile_photo_url+'"></a></div>';
+          userReviews += '<div style="width:90%;display:inline-block">';
+          userReviews += '<div id="authname"><a href="'+sortLowest[k].author_url+'" target="new">'+sortLowest[k].author_name+'</a></div>';
+        }
+        else{
+          userReviews += '<div style="width:10%;display:inline-block"><img width="80%" src="'+sortLowest[k].profile_photo_url+'"></div>';
+          userReviews += '<div style="width:90%;display:inline-block">';
+          userReviews += '<div id="authname">'+sortLowest[k].author_name+'</div>';
+        }
+
+
+
+
+        userReviews += '<div><div id="rateYo'+k+'" style="display:inline-block"></div><div id="time" style="display:inline-block">'+time+'</div></div>'
+        userReviews += '<div>'+sortLowest[k].text+'</div>';
+        userReviews+='</div>'
+        userReviews += '</div>';
+        document.getElementById('allReviews').innerHTML += userReviews; 
+
+         $(function () {
+        var percent = ((sortLowest[k].rating)/Math.ceil(sortLowest[k].rating))*100
+        percent += "%";
+        $("#rateYo"+k).rateYo({
+        rating: percent,
+        numStars: Math.ceil(sortLowest[k].rating),
+        starWidth: "16px",
+        maxValue: 5,
+        readOnly: true
+        });
+        });
+
+        // console.log(place.reviews[k].rating, Math.ceil(place.reviews[k].rating)) 
+      }
+    }
+    
+  }
+   function mostRecent(){
+    document.getElementById('reviewOrder').innerHTML = 'Most Recent';
+    if(yelpreviews.length>0 && showyelp==true)
+    {
+        var mostRecent = yelpreviews.slice();
+        mostRecent = sortByKey(yelpreviews,'time_created');
+        mostRecent = mostRecent.reverse();
+        document.getElementById('allReviews').innerHTML ="";
+      for(var k=0; k<mostRecent.length; k++)
+      { 
+        
+        var time = mostRecent[k].time_created;
+        var userReviews ="";
+        // console.log(time, reviews[k].time);
+        userReviews +=  '<div class="row userReviews">';
+        
+
+        if('url' in mostRecent[k])
+        {
+          userReviews += '<div style="width:10%;display:inline-block"><a href="'+mostRecent[k].url+'" target="new"><img style="border-radius:50%" width="80%" src="'+mostRecent[k].user.image_url+'"></a></div>';
+          userReviews += '<div style="width:90%;display:inline-block">';
+          userReviews += '<div id="authname"><a href="'+mostRecent[k].url+'" target="new">'+mostRecent[k].user.name+'</a></div>';
+        }
+        else{
+          userReviews += '<div style="width:10%;display:inline-block"><img style="border-radius:50%" width="80%" src="'+mostRecent[k].user.image_url+'"></div>';
+          userReviews += '<div style="width:90%;display:inline-block">';
+          userReviews += '<div id="authname">'+mostRecent[k].user.name+'</div>';
+        }
+
+
+
+        userReviews += '<div><div id="rateYo'+k+'" style="display:inline-block"></div><div id="time" style="display:inline-block">'+time+'</div></div>'
+        userReviews += '<div>'+mostRecent[k].text+'</div>';
+        userReviews+='</div>'
+        userReviews += '</div>';
+        document.getElementById('allReviews').innerHTML += userReviews; 
+
+         $(function () {
+        var percent = ((mostRecent[k].rating)/Math.ceil(mostRecent[k].rating))*100
+        percent += "%";
+        $("#rateYo"+k).rateYo({
+        rating: percent,
+        numStars: Math.ceil(mostRecent[k].rating),
+        starWidth: "16px",
+        maxValue: 5,
+        readOnly: true
+        });
+        });
+
+        // console.log(place.reviews[k].rating, Math.ceil(place.reviews[k].rating)) 
+      }
+    }
+
+   if(reviews.length !=0  && showyelp==false)
+    {
+
+
+    var mostRecent = reviews.slice();
+    mostRecent = sortByKey(mostRecent,'time');
+    mostRecent = mostRecent.reverse();
+    // console.log(reviews);
+    // console.log(sortHighest);
+    
+      document.getElementById('allReviews').innerHTML ="";
+      for(var k=0; k<mostRecent.length; k++)
+      { 
+        
+        var time = moment.unix(mostRecent[k].time).format('YYYY-MM-DD HH:mm:ss') ;
+        var userReviews ="";
+        // console.log(time, reviews[k].time);
+        userReviews +=  '<div class="row userReviews">';
+        
+
+        if('author_url' in mostRecent[k])
+        {
+          userReviews += '<div style="width:10%;display:inline-block"><a href="'+mostRecent[k].author_url+'" target="new"><img width="80%" src="'+mostRecent[k].profile_photo_url+'"></a></div>';
+          userReviews += '<div style="width:90%;display:inline-block">';
+          userReviews += '<div id="authname"><a href="'+mostRecent[k].author_url+'" target="new">'+mostRecent[k].author_name+'</a></div>';
+        }
+        else{
+          userReviews += '<div style="width:10%;display:inline-block"><img width="80%" src="'+mostRecent[k].profile_photo_url+'"></div>';
+          userReviews += '<div style="width:90%;display:inline-block">';
+          userReviews += '<div id="authname">'+mostRecent[k].author_name+'</div>';
+        }
+
+
+
+
+
+
+
+        userReviews += '<div><div id="rateYo'+k+'" style="display:inline-block"></div><div id="time" style="display:inline-block">'+time+'</div></div>'
+        userReviews += '<div>'+mostRecent[k].text+'</div>';
+        userReviews+='</div>'
+        userReviews += '</div>';
+        document.getElementById('allReviews').innerHTML += userReviews; 
+
+         $(function () {
+        var percent = ((mostRecent[k].rating)/Math.ceil(mostRecent[k].rating))*100
+        percent += "%";
+        $("#rateYo"+k).rateYo({
+        rating: percent,
+        numStars: Math.ceil(mostRecent[k].rating),
+        starWidth: "16px",
+        maxValue: 5,
+        readOnly: true
+        });
+        });
+
+        // console.log(place.reviews[k].rating, Math.ceil(place.reviews[k].rating)) 
+      }
+    }
+  }
+  
+  
+   function leastRecent(){
+    document.getElementById('reviewOrder').innerHTML = 'Least Recent';
+    if(yelpreviews.length>0 && showyelp==true)
+    {
+        var mostRecent = yelpreviews.slice();
+        mostRecent = sortByKey(yelpreviews,'time_created');
+       
+        document.getElementById('allReviews').innerHTML ="";
+      for(var k=0; k<mostRecent.length; k++)
+      { 
+        
+        var time = mostRecent[k].time_created;
+        var userReviews ="";
+        // console.log(time, reviews[k].time);
+        userReviews +=  '<div class="row userReviews">';
+        
+
+        if('url' in mostRecent[k])
+        {
+          userReviews += '<div style="width:10%;display:inline-block"><a href="'+mostRecent[k].url+'" target="new"><img style="border-radius:50%" width="80%" src="'+mostRecent[k].user.image_url+'"></a></div>';
+          userReviews += '<div style="width:90%;display:inline-block">';
+          userReviews += '<div id="authname"><a href="'+mostRecent[k].url+'" target="new">'+mostRecent[k].user.name+'</a></div>';
+        }
+        else{
+          userReviews += '<div style="width:10%;display:inline-block"><img style="border-radius:50%" width="80%" src="'+mostRecent[k].user.image_url+'"></div>';
+          userReviews += '<div style="width:90%;display:inline-block">';
+          userReviews += '<div id="authname">'+mostRecent[k].user.name+'</div>';
+        }
+
+
+
+
+
+
+
+        userReviews += '<div><div id="rateYo'+k+'" style="display:inline-block"></div><div id="time" style="display:inline-block">'+time+'</div></div>'
+        userReviews += '<div>'+mostRecent[k].text+'</div>';
+        userReviews+='</div>'
+        userReviews += '</div>';
+        document.getElementById('allReviews').innerHTML += userReviews; 
+
+         $(function () {
+        var percent = ((mostRecent[k].rating)/Math.ceil(mostRecent[k].rating))*100
+        percent += "%";
+        $("#rateYo"+k).rateYo({
+        rating: percent,
+        numStars: Math.ceil(mostRecent[k].rating),
+        starWidth: "16px",
+        maxValue: 5,
+        readOnly: true
+        });
+        });
+
+        // console.log(place.reviews[k].rating, Math.ceil(place.reviews[k].rating)) 
+      }
+    }
+
+    if(reviews.length !=0  && showyelp==false)
+    {
+
+
+    var leastRecent = reviews.slice();
+    leastRecent = sortByKey(leastRecent,'time');
+    
+    // console.log(reviews);
+    // console.log(sortHighest);
+    
+      document.getElementById('allReviews').innerHTML ="";
+      for(var k=0; k<leastRecent.length; k++)
+      { 
+        
+        var time = moment.unix(leastRecent[k].time).format('YYYY-MM-DD HH:mm:ss') ;
+        var userReviews ="";
+        // console.log(time, reviews[k].time);
+        userReviews +=  '<div class="row userReviews">';
+       
+
+
+        if('author_url' in leastRecent[k])
+        {
+          userReviews += '<div style="width:10%;display:inline-block"><a href="'+leastRecent[k].author_url+'" target="new"><img width="80%" src="'+leastRecent[k].profile_photo_url+'"></a></div>';
+          userReviews += '<div style="width:90%;display:inline-block">';
+          userReviews += '<div id="authname"><a href="'+leastRecent[k].author_url+'" target="new">'+leastRecent[k].author_name+'</a></div>';
+        }
+        else{
+          userReviews += '<div style="width:10%;display:inline-block"><img width="80%" src="'+leastRecent[k].profile_photo_url+'"></div>';
+          userReviews += '<div style="width:90%;display:inline-block">';
+          userReviews += '<div id="authname">'+leastRecent[k].author_name+'</div>';
+        }
+
+
+        userReviews += '<div><div id="rateYo'+k+'" style="display:inline-block"></div><div id="time" style="display:inline-block">'+time+'</div></div>'
+        userReviews += '<div>'+leastRecent[k].text+'</div>';
+        userReviews+='</div>'
+        userReviews += '</div>';
+        document.getElementById('allReviews').innerHTML += userReviews; 
+
+         $(function () {
+        var percent = ((leastRecent[k].rating)/Math.ceil(leastRecent[k].rating))*100
+        percent += "%";
+        $("#rateYo"+k).rateYo({
+        rating: percent,
+        numStars: Math.ceil(leastRecent[k].rating),
+        starWidth: "16px",
+        maxValue: 5,
+        readOnly: true
+        });
+        });
+
+        // console.log(place.reviews[k].rating, Math.ceil(place.reviews[k].rating)) 
+      }
+    
+  }
+  }
+
+
+
+
+  function sortByKey(array, key) {
+    return array.sort(function(a, b) {
+        var x = a[key]; var y = b[key];
+        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+    });
+}
+
+
+  function toggleStreetView(){
+    
+      var image = document.getElementById('pegmanimage');
+      var toggle = panorama.getVisible();
+      document.getElementById('right-panel').innerHTML = "";
+      if (image.src.match("Pegman")) {
+        image.src = "http://cs-server.usc.edu:45678/hw/hw8/images/Map.png";
+        panorama.setVisible(true);
+      } else {
+        image.src = "http://cs-server.usc.edu:45678/hw/hw8/images/Pegman.png";
+        panorama.setVisible(false);
+      }
+    
+    
+  } 
+
+  function calculateAndDisplayRoute(directionsService, directionsDisplay,dlat,dlon,olat,olon,mode,loc)
+  {
+    dlat = parseFloat(dlat);
+    dlon = parseFloat(dlon);
+    olat = parseFloat(olat);
+    olon = parseFloat(olon);
+    // console.log(dlat,dlon,olat,olon,mode,loc);
+    if(loc == "Your Location" || loc=="My location")
+    {
+      directionsService.route({
+          origin: {lat: olat, lng: olon},  // Haight.
+          destination: {lat: dlat, lng: dlon},  // Ocean Beach.
+          // Note that Javascript allows us to access the constant
+          // using square brackets and a string value as its
+          // "property."
+          provideRouteAlternatives: true,
+          travelMode: google.maps.TravelMode[mode]
+        }, function(response, status) {
+          if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+            // console.log(response);
+
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+    }
+    else{
+        directionsService.route({
+          origin: loc,  // Haight.
+          destination: {lat: dlat, lng: dlon},  // Ocean Beach.
+          // Note that Javascript allows us to access the constant
+          // using square brackets and a string value as its
+          // "property."
+          travelMode: google.maps.TravelMode[mode]
+        }, function(response, status) {
+          if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+    }
+    
+      
+    
+  }
+
+  var prev;
+
+  function changeFavColor(e){
+    if(e.innerHTML=='<i class="far fa-star"></i>')
+    {
+      e.innerHTML = '<i class="fas fa-star"></i>';
+    }
+    else{
+      e.innerHTML = '<i class="far fa-star"></i>';
+    }
+  }
+
+  function modalHTML(dayOfWeek, weekday_text)
+  {
+    // console.log(dayOfWeek);
+    // console.log(weekday_text);
+    var table = '<table class="table"><tbody>';
+    table += '<tr><td><b>'+weekday_text[dayOfWeek]+'</b></td></tr>';
+    var k = dayOfWeek+1;
+    while(k!=dayOfWeek)
+    {
+      if(k==7)
+      {
+        k=0;
+      }
+      table += '<tr><td>'+weekday_text[k]+'</td></tr>';
+      k++;
+    }
+    // for( var k=0; k<weekday_text.length; k++){
+    //     if(k!=dayOfWeek)
+    //     {
+          
+    //     }
+    //   }
+    table += '</tbody></table>';
+    // console.log(table);
+    var html = '<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">'+
+'  <div class="modal-dialog" role="document">'+
+'    <div class="modal-content">'+
+'      <div class="modal-header">'+
+'        <h5 class="modal-title" id="exampleModalLabel">Open hours</h5>'+
+'        <button type="button" class="close" data-dismiss="modal" aria-label="Close">'+
+'          <span aria-hidden="true">×</span>'+
+'        </button>'+
+'      </div>'+
+'      <div class="modal-body">'+ table +
+'      </div>'+
+'      <div class="modal-footer">'+
+'        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>'+
+'      </div>'+
+'    </div>'+
+'  </div>'+
+'</div>';
+  return html;
+  }
+
+
+  function reviewHTML()
+  {
+    var html = '<div class="container"><div class="row" >'+
+'       <div class="dropdown" id="selectReview">'+
+'       '+
+'      </div>'+
+'      <div class="dropdown" id="selectOrder" >'+
+'        '+
+'      </div>'+
+'  </div>  '+
+'<div id="allReviews"></div></div>';
+    return html;
+  }
+
+  function reviewTypeHTML(){
+
+    var html = '<button class="btn btn-secondary dropdown-toggle" type="button" id="reviewButton" data-toggle="dropdown" >'+
+'          Google Reviews'+
+'        </button>'+
+'        <div class="dropdown-menu" aria-labelledby="reviewButton">'+
+'          <a class="dropdown-item" href="javascript:void(0)" onClick="showGoogleReviews()">Google Reviews</a>'+
+'          <a class="dropdown-item" href="javascript:void(0)" onClick="showYelpReviews()">Yelp Reviews</a>'+
+'        </div>';
+    return html
+  }
+
+
+  function reviewOrderHTML(){
+    var html = '<button class="btn btn-secondary dropdown-toggle" type="button" id="reviewOrder" data-toggle="dropdown" >'+
+'          Default Order'+
+'        </button>'+
+'        <div class="dropdown-menu" aria-labelledby="reviewOrder">'+
+'          <a class="dropdown-item" href="javascript:void(0)" onClick="defaultOrder()">Default Order</a>'+
+'          <a class="dropdown-item" href="javascript:void(0)" onClick="highestRating()">Highest Rating</a>'+
+'          <a class="dropdown-item" href="javascript:void(0)" onClick="lowestRating()">Lowest Rating</a>'+
+'          <a class="dropdown-item" href="javascript:void(0)" onClick="mostRecent()">Most Recent</a>'+
+'          <a class="dropdown-item" href="javascript:void(0)" onClick="leastRecent()">Least Recent</a>'+
+'        </div>';
+    return html
+  }
+
+
+
+
+  function generateDetailHeaderHMTL()
+  {
+    var html =     '<div class="container">'+
+'     <div class="col-sm-12" style="text-align:center" id="header">'+
+'     </div>  '+
+'     <div id="backandfav">'+
+'         <div class="backbutton">'+
+'            <button ng-click="showFull=false" class="btn btn-outline-secondary">'+
+'                <i class="fas fa-chevron-left"></i>List'+
+'            </button>'+
+'         </div>'+
+''+
+'         <div class="favtwit">'+
+'            <button  type="button" class="btn btn-outline-secondary">'+
+'            <i class="far fa-star" ></i></button>'+
+'            '+
+'            '+
+'            <button  type="button" class="btn btn-light" id="twitter">'+
+'                <img id=\'twitterimage\'  src="http://cs-server.usc.edu:45678/hw/hw8/images/Twitter.png">'+
+'            </button>'+
+'         </div>'+
+'       </div>  '+
+'       <br>'+
+'  '+
+'  </div>';
+  return html;
+  }
+
+  function generateTabHTML()
+
+  {
+    var mapHTML = generateMapHTML();
+    var html = '   <div class="container"  id="menu">  '  + 
+ '      <ul class="nav nav-tabs justify-content-end" id="myTab" role="tablist">  '  + 
+ '     <li class="nav-item">  '  + 
+ '       <a class="nav-link active" id="info-tab" data-toggle="tab" href="#Info" role="tab" aria-controls="Info" aria-selected="true">Info</a>  '  + 
+ '     </li>  '  + 
+ '     <li class="nav-item">  '  + 
+ '       <a class="nav-link" id="photo-tab" data-toggle="tab" href="#Photos" role="tab" aria-controls="Photos" aria-selected="false">Photos</a>  '  + 
+ '     </li>  '  + 
+ '     <li class="nav-item">  '  + 
+ '       <a class="nav-link" id="map-tab" data-toggle="tab" href="#Map" role="tab" aria-controls="Map" aria-selected="false">Map</a>  '  + 
+ '     </li>  '  + 
+ '     <li class="nav-item">  '  + 
+ '       <a class="nav-link" id="review-tab" data-toggle="tab" href="#Reviews" role="tab" aria-controls="Reviews" aria-selected="false">Reviews</a>  '  + 
+ '     </li>  '  + 
+ '   </ul>  '  + 
+ '   <div class="tab-content" id="myTabContent">  '  + 
+ '     <div class="tab-pane fade show active" id="Info" role="tabpanel" aria-labelledby="info-tab"></div>  '  + 
+ '     <div class="tab-pane fade" id="Photos" role="tabpanel" aria-labelledby="photo-tab"></div>  '  + 
+ '     <div class="tab-pane fade" id="Map" role="tabpanel" aria-labelledby="map-tab" style="height:100%; width: 100%;">'+mapHTML+'</div> ' + 
+ '     <div class="tab-pane fade" id="Reviews" role="tabpanel" aria-labelledby="review-tab"></div>  '  + 
+ '   </div>  '  + 
+ '  </div>  ' ;
+    return html;
+  
+  }
+
+  function generateMapHTML(){
+    var html = '<div class="row">'+
+'     <div class="col-md-10">'+
+'     <div class="form-row">'+
+'       <div class="form-group col-md-4">'+
+'         <label for="from">From</label>'+
+'         <input type="text" class="form-control form-control-sm" onkeyup="directiondisable()" id="autocomplete2" >'+
+'       </div>'+
+'       <div class="form-group col-md-4">'+
+'         <label for="to">To</label>'+
+'         <input type="text" class="form-control form-control-sm" id="to" >'+
+'       </div>'+
+'       <div class="form-group col-md-4">'+
+'         <label for="mode">Travel Mode</label>'+
+'         <select type="text" class="form-control form-control-sm" id="mode" >'+
+'           <option value="DRIVING">Driving</option>'+
+'         <option value="BICYCLING">Bicycling</option>'+
+'         <option value="TRANSIT">Transit</option>'+
+'         <option value="WALKING">Walking</option>'+
+'         </select> '+
+'       </div>'+
+'       '+
+'     </div>  '+
+'     </div>  '+
+'       <div class="col-md-2" id="dir">'+
+'         <div class="form-row">'+
+'           <div class="form-group col-md-12" >'+ '<button id="direction" type="button" class="btn btn-primary btn-sm">Get Directions</button>'+
+'       </div>'+
+'           </div>'+
+'         </div>  '+
+'       '+
+'    </div>'+
+'    <div id="peg">'+
+'     <button  type="button" onClick="toggleStreetView()" class="btn btn-light btn-sm" id="pegman">'+
+'                <img id="pegmanimage"  src="http://cs-server.usc.edu:45678/hw/hw8/images/Pegman.png">'+
+'         </button>'+
+'    </div> '+
+' <div id="map"></div><div id="right-panel"></div>';
+return html;
+
+  }
+
+
+  function setRequired(){
+    document.getElementById("autocomplete").required =true;
+    document.getElementById('sub').disabled = true;
+    document.myform.location.disabled = false;
+    form.classList.remove('was-validated');
+
+    }
+
+    function setNotRequired(){
+    $('#autocomplete').attr('placeholder','Enter a location');
+    
+    document.getElementById("autocomplete").required = false;
+    document.myform.location.disabled = true;
+     document.getElementById('sub').disabled = false;
+
+    }
+  
+  
+
+  // function geolocate() {
+  //       if (navigator.geolocation) {
+  //         navigator.geolocation.getCurrentPosition(function(position) {
+  //           var geolocation = {
+  //             lat: position.coords.latitude,
+  //             lng: position.coords.longitude
+  //           };
+  //           var circle = new google.maps.Circle({
+  //             center: geolocation,
+  //             radius: position.coords.accuracy
+  //           });
+  //           autocomplete.setBounds(circle.getBounds());
+  //         });
+  //       }
+  //     }
+
+    function loadJson() {
+    
+  
+  $.ajax({
+        type:'GET',
+        // url:'http://localhost:8081/search',
+        url: 'http://ip-api.com/json',
+        contentType: 'application/json',
+        dataType: 'jsonp',
+        secure: true,
+                    headers: {
+                        'Access-Control-Allow-Origin': '*',
+                    },
+        cors: true ,            
+        
+        success: function (response,status,xhr) {
+          console.log(response);
+          jsonObj = (response);
+          var lat = jsonObj.lat;
+          var lon = jsonObj.lon;
+          document.myform.latitude.value = lat.toString();
+          document.myform.longitude.value = lon.toString();
+          console.log(lat+" "+lon);
+          
+          
+        },
+        error: function (xhr,status,error) {
+          console.log(status+" "+xhr);
+          console.log('Error: ' + error.message);
+          console.log("There was an error");
+          document.getElementById("sub").disabled = true;
+          }
+      });
+  }
+
+  function changeButton(){
+    var element = document.getElementById("favourites");
+    element.classList.add("btn-primary");
+    var element = document.getElementById("results");
+    element.classList.remove("btn-primary");
+    favs = true;
+    results = false;
+  }
+
+  function changeButton1(){
+    console.log("Entered Here");
+    var element = document.getElementById("favourites");
+    element.classList.remove("btn-primary");
+    var element = document.getElementById("results");
+    element.classList.add("btn-primary");
+      results = true;
+      favs = false;
+
+  }
+
+
+
+</script> 
+
+
+
+</html>	
